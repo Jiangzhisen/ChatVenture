@@ -11,10 +11,7 @@ import SwiftUI
 struct ChatVentureApp: App {
     var body: some Scene {
         WindowGroup {
-            let viewModel = ChatVentureViewModel()
-            ContentView(
-                posts: Array(viewModel.posts[0...2])
-            )
+            LoginView()
         }
     }
 }

@@ -18,7 +18,9 @@ struct NewPostView: View {
     @Environment(\.presentationMode) var presentationMode
     
     // 用于保存新帖子的数组属性
-    @State private var newPosts: [Post] = []
+    //@State private var newPosts: [Post] = []
+    
+    @EnvironmentObject var viewModel: ChatVentureViewModel
     
     var body: some View {
         NavigationView {
@@ -108,27 +110,22 @@ struct NewPostView: View {
         )
         
         // 将新帖子添加到数组中
-        newPosts.append(newPost)
+        viewModel.posts.append(newPost)
+
+        let filePath = "/Users/zhongyuanziguan/Desktop/10944128/FinalProject/ChatVenture/ChatVenture/ChatVentureData.json"
+            let fileURL = URL(fileURLWithPath: filePath)
         
-        // 将新帖子数组编码为JSON数据
-        if let jsonData = try? JSONEncoder().encode(newPosts) {
-            if let jsonString = String(data: jsonData, encoding: .utf8) {
-                // 将JSON数据写入ChatVentureData.json文件
-                if let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("ChatVentureData.json") {
-                    do {
-                        try jsonString.write(to: fileURL, atomically: true, encoding: .utf8)
-                        // 成功写入JSON数据后，可以执行其他操作，如关闭界面或显示成功提示等
-                        // 成功写入JSON数据后，显示成功提示画面
-                        isPostSubmitted = true
-                    } catch {
-                        print("无法写入JSON数据：\(error)")
-                    }
-                }
+            do {
+                let jsonData = try JSONEncoder().encode(viewModel.posts)
+                try jsonData.write(to: fileURL)
+                // 成功写入JSON数据后，可以执行其他操作，如关闭界面或显示成功提示等
+                // 成功写入JSON数据后，显示成功提示画面
+                isPostSubmitted = true
+                // 关闭新帖子界面
+                presentationMode.wrappedValue.dismiss()
+            } catch {
+                print("无法写入JSON数据：\(error)")
             }
-        }
-        
-        // 关闭新帖子界面
-        presentationMode.wrappedValue.dismiss()
 
     }
 }
@@ -136,6 +133,7 @@ struct NewPostView: View {
 struct NewPostView_Previews: PreviewProvider {
     static var previews: some View {
         NewPostView()
+            .environmentObject(ChatVentureViewModel())
     }
 }
 

@@ -16,6 +16,8 @@
 		1D9626872A23260600B7B81B /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9626862A23260600B7B81B /* Post.swift */; };
 		1D9626892A232F6100B7B81B /* PostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9626882A232F6100B7B81B /* PostItem.swift */; };
 		1D96268B2A234ED100B7B81B /* NewPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D96268A2A234ED100B7B81B /* NewPostView.swift */; };
+		1D96268D2A24FF0400B7B81B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D96268C2A24FF0400B7B81B /* LoginView.swift */; };
+		1D96268F2A2502CA00B7B81B /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D96268E2A2502CA00B7B81B /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		1D9626862A23260600B7B81B /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		1D9626882A232F6100B7B81B /* PostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItem.swift; sourceTree = "<group>"; };
 		1D96268A2A234ED100B7B81B /* NewPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostView.swift; sourceTree = "<group>"; };
+		1D96268C2A24FF0400B7B81B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1D96268E2A2502CA00B7B81B /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,12 +68,14 @@
 				1D9626742A23200900B7B81B /* ChatVentureApp.swift */,
 				1D9626762A23200900B7B81B /* ContentView.swift */,
 				1D9626842A23252E00B7B81B /* ChatVentureViewModel.swift */,
-				1D9626822A2321C800B7B81B /* ChatVentureData.json */,
-				1D9626782A23200A00B7B81B /* Assets.xcassets */,
-				1D96267A2A23200A00B7B81B /* Preview Content */,
 				1D9626862A23260600B7B81B /* Post.swift */,
 				1D9626882A232F6100B7B81B /* PostItem.swift */,
 				1D96268A2A234ED100B7B81B /* NewPostView.swift */,
+				1D96268C2A24FF0400B7B81B /* LoginView.swift */,
+				1D9626822A2321C800B7B81B /* ChatVentureData.json */,
+				1D9626782A23200A00B7B81B /* Assets.xcassets */,
+				1D96267A2A23200A00B7B81B /* Preview Content */,
+				1D96268E2A2502CA00B7B81B /* RegisterView.swift */,
 			);
 			path = ChatVenture;
 			sourceTree = "<group>";
@@ -154,9 +160,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D9626772A23200900B7B81B /* ContentView.swift in Sources */,
+				1D96268D2A24FF0400B7B81B /* LoginView.swift in Sources */,
 				1D9626752A23200900B7B81B /* ChatVentureApp.swift in Sources */,
 				1D9626892A232F6100B7B81B /* PostItem.swift in Sources */,
 				1D96268B2A234ED100B7B81B /* NewPostView.swift in Sources */,
+				1D96268F2A2502CA00B7B81B /* RegisterView.swift in Sources */,
 				1D9626852A23252E00B7B81B /* ChatVentureViewModel.swift in Sources */,
 				1D9626872A23260600B7B81B /* Post.swift in Sources */,
 			);

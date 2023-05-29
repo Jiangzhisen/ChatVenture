@@ -64,7 +64,8 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let viewModel = ChatVentureViewModel()
         ContentView(
-            posts: Array(viewModel.posts[0...2])	
+            posts: Array(viewModel.posts[0...3])	
         )
+        .environmentObject(viewModel)
     }
 }

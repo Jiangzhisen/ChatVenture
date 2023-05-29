@@ -46,7 +46,8 @@ struct PostItem: View {
             .background(Color.white)
             .cornerRadius(10)
             .shadow(color: Color.gray.opacity(0.4), radius: 5, x: 0, y: 2)
-            .padding(.horizontal)        }
+            .padding(.horizontal)
+        }
     }
 }
 
