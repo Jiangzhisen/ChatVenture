@@ -106,27 +106,27 @@ struct NewPostView: View {
             titlee: title,
             contentt: content,
             likes: 0,
-            replies: 0
+            replies: 0,
+            comments: []
         )
         
         // 将新帖子添加到数组中
         viewModel.posts.append(newPost)
 
         let filePath = "/Users/zhongyuanziguan/Desktop/10944128/FinalProject/ChatVenture/ChatVenture/ChatVentureData.json"
-            let fileURL = URL(fileURLWithPath: filePath)
+        let fileURL = URL(fileURLWithPath: filePath)
         
-            do {
-                let jsonData = try JSONEncoder().encode(viewModel.posts)
-                try jsonData.write(to: fileURL)
-                // 成功写入JSON数据后，可以执行其他操作，如关闭界面或显示成功提示等
-                // 成功写入JSON数据后，显示成功提示画面
-                isPostSubmitted = true
-                // 关闭新帖子界面
-                presentationMode.wrappedValue.dismiss()
-            } catch {
-                print("无法写入JSON数据：\(error)")
-            }
-
+        do {
+            let jsonData = try JSONEncoder().encode(viewModel.posts)
+            try jsonData.write(to: fileURL)
+            // 成功写入JSON数据后，可以执行其他操作，如关闭界面或显示成功提示等
+            // 成功写入JSON数据后，显示成功提示画面
+            isPostSubmitted = true
+            // 关闭新帖子界面
+            presentationMode.wrappedValue.dismiss()
+        } catch {
+            print("无法写入JSON数据：\(error)")
+        }
     }
 }
 

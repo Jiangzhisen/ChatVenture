@@ -34,7 +34,7 @@ struct LoginView: View {
                 
                 Button(action: {
                     // 在这里执行登录操作，比较用户名和密码是否匹配
-                    if username == "admin" && password == "password" {
+                    if viewModel.users.first(where: { $0.account == username && $0.password == password }) != nil {
                         isLoggedIn = true
                     } else {
                         showErrorAlert = true

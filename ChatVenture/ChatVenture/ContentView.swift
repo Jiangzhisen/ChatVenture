@@ -12,6 +12,8 @@ struct ContentView: View {
     @State private var isPresentingNewPost = false
     
     var body: some View {
+        TabView {
+            // 首页
             NavigationView {
                 List(posts, id: \.id) { post in
                     NavigationLink(destination: PostItem(post: post)) {
@@ -40,7 +42,7 @@ struct ContentView: View {
                         //.shadow(color: Color.gray.opacity(0.4), radius: 5, x: 0, y: 2)
                     }
                 }
-                .navigationTitle("貼文列表")
+                .navigationTitle("首頁")
                 .navigationBarItems(trailing:
                     Button(action: {
                         isPresentingNewPost = true
@@ -55,7 +57,42 @@ struct ContentView: View {
                     }
                 )
             }
+            .tabItem {
+                Image(systemName: "house")
+                Text("首頁")
+            }
+            
+            // 追踪列表页
+           NavigationView {
+               // ...
+           }
+           .tabItem {
+               Image(systemName: "heart")
+               Text("追蹤列表")
+           }
+           
+           // 通知页
+           NavigationView {
+               // ...
+           }
+           .tabItem {
+               Image(systemName: "bell")
+               Text("通知")
+           }
+           
+           // 个人资料页
+           NavigationView {
+               // ...
+           }
+           .tabItem {
+               Image(systemName: "person")
+               Text("個人資料")
+           }
         }
+        .accentColor(.blue) // 设置选项卡的选中颜色
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: EmptyView())
+    }
 }
 
 

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct PostItem: View {
     let post: Post
+    @State private var commentText = ""
+    @State private var comments: [Comment] = [] // 存储评论的数组
     
     var body: some View {
         ScrollView {
@@ -41,6 +43,41 @@ struct PostItem: View {
                 .padding(.top, 12)
                 
                 Spacer()
+                
+                HStack {
+                    ZStack(alignment: .leading) {
+                        if commentText.isEmpty {
+                            Text("撰寫留言...")
+                                .foregroundColor(.gray)
+                                .padding(.horizontal)
+                        }
+                        
+                        TextEditor(text: $commentText)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding(.horizontal)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.gray, lineWidth: 1)
+                            )
+                    }
+                    
+                    Button(action: {
+                        // 在此处执行提交评论的操作
+                        submitComment()
+                        commentText = ""
+                    }) {
+                        Text("提交")
+                            .foregroundColor(.white)
+                            .padding(.vertical, 8)
+                            .padding(.horizontal, 16)
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                    }
+                    .disabled(commentText.isEmpty) // 当输入框为空时禁用按钮
+                }
+                
+                
+                
             }
             .padding()
             .background(Color.white)
@@ -48,6 +85,10 @@ struct PostItem: View {
             .shadow(color: Color.gray.opacity(0.4), radius: 5, x: 0, y: 2)
             .padding(.horizontal)
         }
+    }
+    
+    func submitComment() {
+        // 执行提交评论的逻辑
     }
 }
 
