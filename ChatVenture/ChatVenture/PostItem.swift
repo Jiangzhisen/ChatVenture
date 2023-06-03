@@ -10,7 +10,8 @@ import SwiftUI
 struct PostItem: View {
     let post: Post
     @State private var commentText = ""
-    @State private var comments: [Comment] = [] // 存储评论的数组
+    @EnvironmentObject private var viewModel: ChatVentureViewModel
+
     
     var body: some View {
         ScrollView {
@@ -36,7 +37,7 @@ struct PostItem: View {
                         .foregroundColor(.black)
                     Image(systemName: "message.fill")
                         .foregroundColor(.green)
-                    Text("\(post.replies)")
+                    Text("\(post.comments.count)")
                         .foregroundColor(.black)
                 }
                 .font(.caption)
@@ -76,7 +77,31 @@ struct PostItem: View {
                     .disabled(commentText.isEmpty) // 当输入框为空时禁用按钮
                 }
                 
+                Spacer()
                 
+                // 评论区域
+                HStack {
+                    Text("評論數: (\(post.comments.count))")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                        .padding(.bottom, 8)
+                }
+                ForEach(post.comments) { comment in
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(comment.commentuserid)
+                            .font(.subheadline)
+                            .fontWeight(.bold)
+                            .foregroundColor(.blue)
+                        Text(comment.commentcontent)
+                            .font(.body)
+                            .foregroundColor(.black)
+                    }
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, 16)
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(10)
+                    .padding(.bottom, 8)
+                }
                 
             }
             .padding()
@@ -89,8 +114,28 @@ struct PostItem: View {
     
     func submitComment() {
         // 执行提交评论的逻辑
+        let userid = UserSingleton.shared.currentUser
+        
+        let userName = viewModel.users.first(where: { $0.id == userid })
+        let userName1 = userName?.userName
+        
+        print("userid: \(userName)")
+        
+        let newComment = Comment(
+            id: UUID().uuidString,
+            commentuserid: userName1!,
+            commentcontent: commentText
+        )
+        
+        let postID = post.id
+        viewModel.addComment(to: postID, comment: newComment)
+        
+        // 清空评论输入框
+        commentText = ""
+        
     }
 }
+
 
 struct PostItem_Previews: PreviewProvider {
     static var previews: some View {

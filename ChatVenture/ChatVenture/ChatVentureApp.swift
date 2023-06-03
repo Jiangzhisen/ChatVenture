@@ -14,7 +14,7 @@ struct ChatVentureApp: App {
     var body: some Scene {
         WindowGroup {
             LoginView()
-                .environmentObject(viewModel) // 将 ChatVentureViewModel 设置为环境对象
+                .environmentObject(viewModel)
         }
     }
 }

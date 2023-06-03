@@ -13,7 +13,7 @@ struct LoginView: View {
     @State private var isLoggedIn = false
     @State private var showErrorAlert = false
     
-    let viewModel = ChatVentureViewModel()
+    @EnvironmentObject private var viewModel: ChatVentureViewModel
     
     var body: some View {
         NavigationView {
@@ -34,8 +34,12 @@ struct LoginView: View {
                 
                 Button(action: {
                     // 在这里执行登录操作，比较用户名和密码是否匹配
-                    if viewModel.users.first(where: { $0.account == username && $0.password == password }) != nil {
+                    if let user = viewModel.users.first(where: { $0.account == username && $0.password == password }) {
                         isLoggedIn = true
+                        viewModel.isLoggingIn = true
+                        let userid = user.id
+                        UserSingleton.shared.currentUser = userid
+                        
                     } else {
                         showErrorAlert = true
                     }
@@ -50,7 +54,7 @@ struct LoginView: View {
                 }
                 .padding()
                 
-                NavigationLink(destination: ContentView(posts: Array(viewModel.posts[0...3])), isActive: $isLoggedIn) {
+                NavigationLink(destination: ContentView(posts: Array(viewModel.posts[0...2])), isActive: $isLoggedIn){
                     EmptyView()
                 }
                 .hidden()
@@ -78,13 +82,17 @@ struct LoginView: View {
                 )
             }
             .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true) // Hide back button
         }
     }
 }
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
+        let viewModel = ChatVentureViewModel()
+        
         LoginView()
+            .environmentObject(viewModel)
     }
 }
 

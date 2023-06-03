@@ -19,6 +19,11 @@ struct RegisterView: View {
     
     var body: some View {
         VStack {
+            Text("註冊")
+                .font(.custom("Arial Rounded MT Bold", size: 48))
+                .foregroundColor(.blue)
+                .padding(.bottom, 75)
+            
             TextField("Username", text: $username)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
@@ -60,7 +65,7 @@ struct RegisterView: View {
     func registerUser() {
         // 创建 User 对象
         let newUser = User(
-            id: "M23456",
+            id: UUID().uuidString,
             userName: username,
             account: account,
             password: password

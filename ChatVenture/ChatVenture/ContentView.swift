@@ -10,99 +10,70 @@ import SwiftUI
 struct ContentView: View {
     let posts: [Post] // 帖子数组
     @State private var isPresentingNewPost = false
+    @EnvironmentObject var viewModel: ChatVentureViewModel
     
     var body: some View {
-        TabView {
-            // 首页
-            NavigationView {
-                List(posts, id: \.id) { post in
-                    NavigationLink(destination: PostItem(post: post)) {
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text(post.topic)
-                                .font(.subheadline)
-                                .foregroundColor(.orange)
-                            Text(post.titlee)
-                                .font(.headline)
-                                .foregroundColor(.blue)
-                                .lineLimit(2)
-                            HStack {
-                                Image(systemName: "heart.fill")
-                                    .foregroundColor(.red)
-                                Text("\(post.likes)")
-                                    .foregroundColor(.black)
-                                Image(systemName: "bubble.right.fill")
-                                    .foregroundColor(.green)
-                                Text("\(post.replies)")
-                                    .foregroundColor(.black)
-                            }
-                        }
-                        .padding(12)
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        //.shadow(color: Color.gray.opacity(0.4), radius: 5, x: 0, y: 2)
-                    }
+        let userid = UserSingleton.shared.currentUser
+        if viewModel.isLoggingIn {
+            TabView {
+                // 首页
+                NavigationView {
+                    PostListView(posts: viewModel.posts)
                 }
-                .navigationTitle("首頁")
-                .navigationBarItems(trailing:
-                    Button(action: {
-                        isPresentingNewPost = true
-                    }) {
-                        Image(systemName: "plus.circle.fill")
-                            .foregroundColor(.blue)
-                            .font(.title)
-                    }
-                    .sheet(isPresented: $isPresentingNewPost) {
-                        // 这里是新增贴文页面的视图
-                        NewPostView()
-                    }
-                )
+                .tabItem {
+                    Image(systemName: "house.fill")
+                    Text("首頁")
+                }
+                .accentColor(.blue)
+                
+                // 追踪列表页
+                NavigationView {
+                    // ...
+                }
+                .tabItem {
+                    Image(systemName: "heart.fill")
+                    Text("追蹤列表")
+                }
+                .accentColor(.blue)
+                
+                // 通知页
+                NavigationView {
+                    // ...
+                }
+                .tabItem {
+                    Image(systemName: "bell.fill")
+                    Text("通知")
+                }
+                .accentColor(.blue)
+                
+                // 个人资料页
+                NavigationView {
+                    PersonalView()
+                }
+                .tabItem {
+                    Image(systemName: "person.fill")
+                    Text("個人資料")
+                }
+                .accentColor(.blue)
             }
-            .tabItem {
-                Image(systemName: "house")
-                Text("首頁")
-            }
-            
-            // 追踪列表页
-           NavigationView {
-               // ...
-           }
-           .tabItem {
-               Image(systemName: "heart")
-               Text("追蹤列表")
-           }
-           
-           // 通知页
-           NavigationView {
-               // ...
-           }
-           .tabItem {
-               Image(systemName: "bell")
-               Text("通知")
-           }
-           
-           // 个人资料页
-           NavigationView {
-               // ...
-           }
-           .tabItem {
-               Image(systemName: "person")
-               Text("個人資料")
-           }
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: EmptyView())
         }
-        .accentColor(.blue) // 设置选项卡的选中颜色
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: EmptyView())
+        else {
+            LoginView()
+                .navigationBarBackButtonHidden(true)
+                .navigationBarItems(leading: EmptyView())
+        }
     }
 }
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let viewModel = ChatVentureViewModel()
         ContentView(
-            posts: Array(viewModel.posts[0...3])	
+            posts: Array(viewModel.posts[0...4])
         )
         .environmentObject(viewModel)
     }
 }
+

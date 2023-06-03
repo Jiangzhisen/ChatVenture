@@ -13,6 +13,8 @@ struct NewPostView: View {
     @State private var title = ""
     @State private var content = ""
     
+    @EnvironmentObject private var viewModel: ChatVentureViewModel
+    
     @State private var isPostSubmitted = false // 新增的状态属性
     
     @Environment(\.presentationMode) var presentationMode
@@ -20,20 +22,14 @@ struct NewPostView: View {
     // 用于保存新帖子的数组属性
     //@State private var newPosts: [Post] = []
     
-    @EnvironmentObject var viewModel: ChatVentureViewModel
-    
     var body: some View {
         NavigationView {
             VStack {
-                TextField("使用者名稱", text: $username)
+                TextField("標題", text: $title)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 
                 TextField("主題", text: $topic)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
-                
-                TextField("標題", text: $title)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 
@@ -99,9 +95,15 @@ struct NewPostView: View {
         // 在这里执行提交操作，可以使用 username、topic、title 和 content 属性的值
         // 根据需要执行适当的操作，比如创建新的帖子对象，并将其添加到数据源中
         // 示例：创建一个新的 Post 对象并执行保存操作
+        
+        let userid = UserSingleton.shared.currentUser
+        
+        let userName = viewModel.users.first(where: { $0.id == userid })
+        let userName1 = userName?.userName
+        
         let newPost = Post(
             id: UUID().uuidString,
-            userid: username,
+            userid: userName1!,
             topic: topic,
             titlee: title,
             contentt: content,
@@ -111,22 +113,10 @@ struct NewPostView: View {
         )
         
         // 将新帖子添加到数组中
-        viewModel.posts.append(newPost)
-
-        let filePath = "/Users/zhongyuanziguan/Desktop/10944128/FinalProject/ChatVenture/ChatVenture/ChatVentureData.json"
-        let fileURL = URL(fileURLWithPath: filePath)
+        viewModel.addPost(post: newPost)
         
-        do {
-            let jsonData = try JSONEncoder().encode(viewModel.posts)
-            try jsonData.write(to: fileURL)
-            // 成功写入JSON数据后，可以执行其他操作，如关闭界面或显示成功提示等
-            // 成功写入JSON数据后，显示成功提示画面
-            isPostSubmitted = true
-            // 关闭新帖子界面
-            presentationMode.wrappedValue.dismiss()
-        } catch {
-            print("无法写入JSON数据：\(error)")
-        }
+        presentationMode.wrappedValue.dismiss()
+        
     }
 }
 
