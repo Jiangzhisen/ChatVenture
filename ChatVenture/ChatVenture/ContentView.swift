@@ -38,7 +38,7 @@ struct ContentView: View {
                 
                 // 通知页
                 NavigationView {
-                    // ...
+                    NotifyView(notifications: viewModel.notifications)
                 }
                 .tabItem {
                     Image(systemName: "bell.fill")

@@ -109,7 +109,8 @@ struct NewPostView: View {
             contentt: content,
             likes: 0,
             replies: 0,
-            comments: []
+            comments: [],
+            islike: false
         )
         
         // 将新帖子添加到数组中

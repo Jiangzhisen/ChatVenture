@@ -60,6 +60,7 @@ struct PostListView: View {
                 }
             )
         }
+        .navigationBarTitle("首頁", displayMode: .inline)
     }
 }
 

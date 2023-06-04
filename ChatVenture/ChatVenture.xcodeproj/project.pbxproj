@@ -25,6 +25,7 @@
 		1D9BDF892A2BAD5F003BC7FF /* PersonalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9BDF882A2BAD5F003BC7FF /* PersonalView.swift */; };
 		1D9BDF8B2A2BD296003BC7FF /* NotifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9BDF8A2A2BD296003BC7FF /* NotifyView.swift */; };
 		1D9BDF8D2A2BD2E3003BC7FF /* notify.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D9BDF8C2A2BD2E3003BC7FF /* notify.json */; };
+		1D9BDF8F2A2BD52F003BC7FF /* Notify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9BDF8E2A2BD52F003BC7FF /* Notify.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		1D9BDF882A2BAD5F003BC7FF /* PersonalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalView.swift; sourceTree = "<group>"; };
 		1D9BDF8A2A2BD296003BC7FF /* NotifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyView.swift; sourceTree = "<group>"; };
 		1D9BDF8C2A2BD2E3003BC7FF /* notify.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = notify.json; sourceTree = "<group>"; };
+		1D9BDF8E2A2BD52F003BC7FF /* Notify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notify.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,11 +94,12 @@
 				1D9BDF862A2B9FAF003BC7FF /* PostListView.swift */,
 				1D9BDF882A2BAD5F003BC7FF /* PersonalView.swift */,
 				1D9BDF8A2A2BD296003BC7FF /* NotifyView.swift */,
+				1D9BDF8E2A2BD52F003BC7FF /* Notify.swift */,
 				1D9626822A2321C800B7B81B /* ChatVentureData.json */,
 				1D9626902A26173F00B7B81B /* user.json */,
+				1D9BDF8C2A2BD2E3003BC7FF /* notify.json */,
 				1D9626782A23200A00B7B81B /* Assets.xcassets */,
 				1D96267A2A23200A00B7B81B /* Preview Content */,
-				1D9BDF8C2A2BD2E3003BC7FF /* notify.json */,
 			);
 			path = ChatVenture;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				1D9626892A232F6100B7B81B /* PostItem.swift in Sources */,
 				1D96268B2A234ED100B7B81B /* NewPostView.swift in Sources */,
 				1D9BDF872A2B9FAF003BC7FF /* PostListView.swift in Sources */,
+				1D9BDF8F2A2BD52F003BC7FF /* Notify.swift in Sources */,
 				1D9BDF852A26619A003BC7FF /* Comment.swift in Sources */,
 				1D9626932A2619F000B7B81B /* User.swift in Sources */,
 				1D96268F2A2502CA00B7B81B /* RegisterView.swift in Sources */,

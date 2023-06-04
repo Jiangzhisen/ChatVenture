@@ -11,6 +11,7 @@ import UIKit
 struct PersonalView: View {
     @EnvironmentObject var viewModel: ChatVentureViewModel
     @Environment(\.presentationMode) var presentationMode
+    @State private var showSuccessAlert = false
     
     var body: some View {
         ScrollView {
@@ -62,6 +63,13 @@ struct PersonalView: View {
         }
         .padding()
         .background(Color.gray.opacity(0.1))
+        .alert(isPresented: $showSuccessAlert) {
+            Alert(
+                title: Text("登出成功"),
+                message: Text("您已成功登出。"),
+                dismissButton: .default(Text("OK"))
+            )
+        }
     }
     
     func getUserName() -> String? {
@@ -104,6 +112,10 @@ struct PersonalView: View {
     func logout() {
         UserSingleton.shared.currentUser = ""
         viewModel.isLoggingIn = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            showSuccessAlert = true
+        }
+        
     }
 
     

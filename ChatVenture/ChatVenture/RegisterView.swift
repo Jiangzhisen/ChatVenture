@@ -56,7 +56,6 @@ struct RegisterView: View {
                 message: Text("Congratulations! You have successfully registered."),
                 dismissButton: .default(Text("OK")) {
                     presentationMode.wrappedValue.dismiss() // 返回登录页面
-                    //isRegistered = true // 标记为已注册，触发导航链接返回到LoginView
                 }
             )
         }

@@ -16,4 +16,5 @@ struct Post: Codable, Identifiable {
     var likes: Int
     var replies: Int
     var comments: [Comment]
+    var islike: Bool
 }

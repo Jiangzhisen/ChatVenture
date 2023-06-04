@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct PostItem: View {
-    let post: Post
+    var post: Post
     @State private var commentText = ""
     @EnvironmentObject private var viewModel: ChatVentureViewModel
-
+    @State private var likes1: Int = 0
     
     var body: some View {
         ScrollView {
@@ -31,16 +31,21 @@ struct PostItem: View {
                     .font(.body)
                     .lineLimit(nil)
                 HStack {
-                    Image(systemName: "heart.fill")
-                        .foregroundColor(.red)
+                    Button(action: {
+                        toggleLike()
+                    }) {
+                        Image(systemName: post.islike ? "heart.fill" : "heart")
+                            .foregroundColor(post.islike ? .red : .black)
+                    }
                     Text("\(post.likes)")
                         .foregroundColor(.black)
+    
                     Image(systemName: "message.fill")
                         .foregroundColor(.green)
                     Text("\(post.comments.count)")
                         .foregroundColor(.black)
                 }
-                .font(.caption)
+                .font(.title)
                 .padding(.top, 12)
                 
                 Spacer()
@@ -132,8 +137,17 @@ struct PostItem: View {
         
         // 清空评论输入框
         commentText = ""
-        
     }
+    
+    func toggleLike() {
+        
+        if post.islike {
+            viewModel.updateLikes(for: post.id, newLikesCount: post.likes - 1, newLikesStatus: !post.islike)
+        } else {
+            viewModel.updateLikes(for: post.id, newLikesCount: post.likes + 1, newLikesStatus: !post.islike)
+        }
+    }
+    
 }
 
 
