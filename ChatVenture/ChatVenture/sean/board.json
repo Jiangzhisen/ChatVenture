@@ -1,0 +1,28 @@
+[
+    {
+            "id":"B001",
+        "bName":"Joke",
+        "Img":"moon.stars.circle.fill"
+        
+        
+    },
+    
+    {
+        "id":"B002",
+        "bName":"Exam",
+        "Img":"wind.snow"
+        
+    },
+    {
+        "id":"B003",
+        "bName":"Gossip",
+        "Img":"carbon.dioxide.cloud.fill"
+        
+    },
+    {
+        "id":"B004",
+        "bName":"123",
+        "Img":"tornado"
+        
+    }
+]

@@ -12,11 +12,14 @@ class ChatVentureViewModel: ObservableObject {
     @Published var users: [User] = []
     @Published var notifications: [Notification] = []
     @Published var isLoggingIn: Bool = false
+    @Published var board : [Board] = []
     
     init() {
         self.loadPosts("ChatVentureData.json") // 在初始化器中调用加载数据的方法
         self.loadUsers("user.json")
         self.loadNotify("notify.json")
+        self.loadBoard("board.json")
+
     }
     
     func loadPosts(_ filename: String) {
@@ -38,6 +41,25 @@ class ChatVentureViewModel: ObservableObject {
         }
     }
     
+    func loadBoard(_ filename: String) {
+        let data: Data
+        guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
+            else {
+                fatalError("Couldn't find \(filename) in main bundle.")
+        }
+        do {
+            data = try Data(contentsOf: file)
+        } catch {
+            fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
+        }
+        do {
+            let decoder = JSONDecoder()
+            self.board = try decoder.decode([Board].self, from: data)
+        } catch {
+            fatalError("Couldn't parse \(filename) as \([Board].self):\n\(error)")
+        }
+    }
+
     
     func loadUsers(_ filename: String) {
         let data: Data

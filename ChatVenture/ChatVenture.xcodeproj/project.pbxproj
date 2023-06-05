@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D786B4E2A2CAE81009FFD9F /* board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D786B4D2A2CAE81009FFD9F /* board.swift */; };
+		1D786B502A2CAEA4009FFD9F /* boardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D786B4F2A2CAEA4009FFD9F /* boardList.swift */; };
+		1D786B522A2CAEBB009FFD9F /* boardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D786B512A2CAEBB009FFD9F /* boardRow.swift */; };
+		1D786B542A2CAEDD009FFD9F /* boardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D786B532A2CAEDD009FFD9F /* boardDetail.swift */; };
+		1D786B582A2CAFB2009FFD9F /* board.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D786B572A2CAFB2009FFD9F /* board.json */; };
 		1D9626752A23200900B7B81B /* ChatVentureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9626742A23200900B7B81B /* ChatVentureApp.swift */; };
 		1D9626772A23200900B7B81B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9626762A23200900B7B81B /* ContentView.swift */; };
 		1D9626792A23200A00B7B81B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D9626782A23200A00B7B81B /* Assets.xcassets */; };
@@ -29,6 +34,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D786B4D2A2CAE81009FFD9F /* board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = board.swift; sourceTree = "<group>"; };
+		1D786B4F2A2CAEA4009FFD9F /* boardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = boardList.swift; sourceTree = "<group>"; };
+		1D786B512A2CAEBB009FFD9F /* boardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = boardRow.swift; sourceTree = "<group>"; };
+		1D786B532A2CAEDD009FFD9F /* boardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = boardDetail.swift; sourceTree = "<group>"; };
+		1D786B572A2CAFB2009FFD9F /* board.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = board.json; sourceTree = "<group>"; };
 		1D9626712A23200900B7B81B /* ChatVenture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatVenture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D9626742A23200900B7B81B /* ChatVentureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVentureApp.swift; sourceTree = "<group>"; };
 		1D9626762A23200900B7B81B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +72,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D786B4C2A2CAE56009FFD9F /* sean */ = {
+			isa = PBXGroup;
+			children = (
+				1D786B4D2A2CAE81009FFD9F /* board.swift */,
+				1D786B4F2A2CAEA4009FFD9F /* boardList.swift */,
+				1D786B512A2CAEBB009FFD9F /* boardRow.swift */,
+				1D786B572A2CAFB2009FFD9F /* board.json */,
+				1D786B532A2CAEDD009FFD9F /* boardDetail.swift */,
+			);
+			path = sean;
+			sourceTree = "<group>";
+		};
 		1D9626682A23200900B7B81B = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +103,7 @@
 		1D9626732A23200900B7B81B /* ChatVenture */ = {
 			isa = PBXGroup;
 			children = (
+				1D786B4C2A2CAE56009FFD9F /* sean */,
 				1D9626742A23200900B7B81B /* ChatVentureApp.swift */,
 				1D9626762A23200900B7B81B /* ContentView.swift */,
 				1D9626842A23252E00B7B81B /* ChatVentureViewModel.swift */,
@@ -170,6 +193,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D786B582A2CAFB2009FFD9F /* board.json in Resources */,
 				1D9626912A26173F00B7B81B /* user.json in Resources */,
 				1D96267C2A23200A00B7B81B /* Preview Assets.xcassets in Resources */,
 				1D9626832A2321C800B7B81B /* ChatVentureData.json in Resources */,
@@ -187,6 +211,7 @@
 			files = (
 				1D9BDF892A2BAD5F003BC7FF /* PersonalView.swift in Sources */,
 				1D9626772A23200900B7B81B /* ContentView.swift in Sources */,
+				1D786B522A2CAEBB009FFD9F /* boardRow.swift in Sources */,
 				1D9BDF8B2A2BD296003BC7FF /* NotifyView.swift in Sources */,
 				1D96268D2A24FF0400B7B81B /* LoginView.swift in Sources */,
 				1D9626752A23200900B7B81B /* ChatVentureApp.swift in Sources */,
@@ -195,9 +220,12 @@
 				1D9BDF872A2B9FAF003BC7FF /* PostListView.swift in Sources */,
 				1D9BDF8F2A2BD52F003BC7FF /* Notify.swift in Sources */,
 				1D9BDF852A26619A003BC7FF /* Comment.swift in Sources */,
+				1D786B542A2CAEDD009FFD9F /* boardDetail.swift in Sources */,
 				1D9626932A2619F000B7B81B /* User.swift in Sources */,
+				1D786B4E2A2CAE81009FFD9F /* board.swift in Sources */,
 				1D96268F2A2502CA00B7B81B /* RegisterView.swift in Sources */,
 				1D9626852A23252E00B7B81B /* ChatVentureViewModel.swift in Sources */,
+				1D786B502A2CAEA4009FFD9F /* boardList.swift in Sources */,
 				1D9626872A23260600B7B81B /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,6 +362,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -362,6 +391,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

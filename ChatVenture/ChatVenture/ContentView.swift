@@ -27,12 +27,11 @@ struct ContentView: View {
                 .accentColor(.blue)
                 
                 // 追踪列表页
-                NavigationView {
-                    // ...
-                }
-                .tabItem {
+                
+                boardList(viewModel2: ChatVentureViewModel(), boards: viewModel.board)
+                    .tabItem {
                     Image(systemName: "heart.fill")
-                    Text("追蹤列表")
+                    Text("看板列表")
                 }
                 .accentColor(.blue)
                 

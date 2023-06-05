@@ -1,22 +1,27 @@
-//
-//  PostListView.swift
-//  ChatVenture
-//
-//  Created by 中原資管 on 2023/6/4.
-//
-
-
+////
+////  boardDetail.swift
+////  ChatVenture
+////
+////  Created by 中原資管 on 2023/6/4.
+////
 
 import SwiftUI
 
-struct PostListView: View {
+struct PostListView2: View {
     let posts: [Post] // 帖子数组
+    var nowTpoic2 : String
     @State private var isPresentingNewPost = false
-    @EnvironmentObject var viewModel: ChatVentureViewModel
+     @EnvironmentObject var viewModel: ChatVentureViewModel
+    
+    var filteredPost:[Post]{
+        viewModel.posts.filter { post in
+            post.topic==nowTpoic2
+        }
+    }
     
     var body: some View {
         ScrollView {
-            ForEach(viewModel.posts) { post in
+            ForEach(filteredPost) { post in
                 NavigationLink(destination: PostItem(post: post)) {
                     VStack(alignment: .leading, spacing: 8) {
                         Text(post.topic)
@@ -65,7 +70,7 @@ struct PostListView: View {
 }
 
 
-struct PostListView_Previews: PreviewProvider {
+struct PostListView_Previews2: PreviewProvider {
     static var previews: some View {
         let viewModel = ChatVentureViewModel()
         ContentView(
@@ -74,3 +79,49 @@ struct PostListView_Previews: PreviewProvider {
         .environmentObject(viewModel)
     }
 }
+//
+//
+//struct Post2: Identifiable {
+//    let id = UUID()
+//    let title: String
+//    let content: String
+//    // 其他屬性
+//}
+//
+//struct PostView: View {
+//    let post: Post2
+//
+//    var body: some View {
+//        VStack(alignment: .leading) {
+//            Text(post.title)
+//                .font(.title)
+//                .fontWeight(.bold)
+//            Text(post.content)
+//                .font(.body)
+//                .foregroundColor(.gray)
+//        }
+//        .padding()
+//    }
+//}
+//
+struct PostListView3: View {
+    
+     var nowTpoic2 : String
+    var body: some View {
+        Text("123")
+    }
+}
+//
+//struct ContentView2: View {
+//    var body: some View {
+//        NavigationView {
+//            DiscussionBoardView()
+//        }
+//    }
+//}
+//
+//struct ContentView_Previews2: PreviewProvider {
+//    static var previews: some View {
+//        ContentView2()
+//    }
+//}
